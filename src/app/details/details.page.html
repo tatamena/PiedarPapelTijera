@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Juegas con {{user.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="ion-padding">
+   <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+          <p align="center">
+          <ion-avatar>
+            <ion-img  class="ava" src={{user.foto}}></ion-img>
+          </ion-avatar>
+          </p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <h3 align="center">Has elegido a {{user.name}}</h3>
+          <p align="center">Edad:{{user.age}} años</p>
+          <p align="center">Habilidad: {{user.habilidad}}</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div *ngIf="!loading && isResultShow" class="flex-container flex-center" style="flex-direction: column">
+          <div [ngSwitch]="theResult">
+            <p align="center"><ng-template [ngSwitchCase]= "0"> <h3> Ganaste! </h3></ng-template></p>
+            <p align="center"><ng-template [ngSwitchCase]= "1"> <h3> Perdiste </h3> </ng-template></p>
+            <p align="center"> <ng-template [ngSwitchCase]= "2"> <h3>Empate! </h3> </ng-template></p>
+            <p align="center"> <ng-template ngSwitchDefault> </ng-template></p>
+          </div>
+          <p align="center"> Elige de nuevo para continuar </p>
+          <p align="center"><ion-button (click)="reset()" color="success"> Reiniciar </ion-button></p>
+        </div>
+
+        <div class="flex-container flex-center" *ngIf="loading">
+          <p align="center"><ion-spinner name="bubbles"></ion-spinner></p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <!-- You -->
+          <div class="content1">
+            <h2>{{user.name}}</h2>
+            <ion-button color="warning" class="score">{{ scores[0] }}</ion-button>
+          </div>
+
+          <div>
+            <p align="center"><ion-img *ngIf="playerSelected === -1" src="https://raw.githubusercontent.com/tatamena/camaleon-mapache/master/jugada.png"></ion-img></p>
+            <p align="center"><ion-img *ngIf="playerSelected === 0" class="ima" src="https://images.vexels.com/media/users/3/145675/isolated/preview/f5f833342d34713f854f4b170296a3c6-piedra-geom--trica-by-vexels.png"></ion-img></p>
+            <p align="center"><ion-img *ngIf="playerSelected === 1" class="ima" src="https://lh3.googleusercontent.com/proxy/igsGeEA7-tYTKjO7t4cN6VHOwhrtHSUFZMzzOEufmDxZqYoN90ZHvstE7LH3Z9FqJoLFUGS8F38uvF_-mMhMU4JisPtV79c"></ion-img></p>
+            <p align="center"><ion-img *ngIf="playerSelected === 2" class="ima" src="https://www.goodfreephotos.com/albums/vector-images/blue-scissors-vector-clipart.png"></ion-img></p>
+          </div>
+
+          <div  class="content2">
+            <p align="center"><ion-img (click)="pick(0)" class="fa" src="https://images.vexels.com/media/users/3/145675/isolated/preview/f5f833342d34713f854f4b170296a3c6-piedra-geom--trica-by-vexels.png"></ion-img></p>
+            <p align="center"><ion-img (click)="pick(1)" class="fa" src="https://lh3.googleusercontent.com/proxy/igsGeEA7-tYTKjO7t4cN6VHOwhrtHSUFZMzzOEufmDxZqYoN90ZHvstE7LH3Z9FqJoLFUGS8F38uvF_-mMhMU4JisPtV79c"></ion-img></p>
+            <p align="center"><ion-img (click)="pick(2)" class="fa" src="https://www.goodfreephotos.com/albums/vector-images/blue-scissors-vector-clipart.png"></ion-img></p>
+           </div>
+
+
+         </ion-col>
+         <ion-col>
+
+           <!-- Player 2 -->
+          <div class="content1">
+            <h2>Ordenador</h2>
+            <ion-button color="warning" class="score">{{scores[1]}}</ion-button>
+          </div>
+          <br><br>
+           <div *ngIf="enemySelected !== -1" class="flex-container flex-center">
+
+             <p align="center"><ion-img *ngIf="enemySelected === 0" class="ima" src="https://images.vexels.com/media/users/3/145675/isolated/preview/f5f833342d34713f854f4b170296a3c6-piedra-geom--trica-by-vexels.png"></ion-img></p>
+             <p align="center"><ion-img *ngIf="enemySelected === 1" class="ima" src="https://lh3.googleusercontent.com/proxy/igsGeEA7-tYTKjO7t4cN6VHOwhrtHSUFZMzzOEufmDxZqYoN90ZHvstE7LH3Z9FqJoLFUGS8F38uvF_-mMhMU4JisPtV79c"></ion-img></p>
+             <p align="center"><ion-img *ngIf="enemySelected === 2" class="ima" src="https://www.goodfreephotos.com/albums/vector-images/blue-scissors-vector-clipart.png"></ion-img></p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>
+
+
+

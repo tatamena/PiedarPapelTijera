@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="success">
+    <ion-title>
+      <p align="center">Piedra-Papel-Tijera</p>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-title size="large">RPS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <p align="center"><ion-img class="logo" src="https://images.vexels.com/media/users/3/145675/isolated/preview/f5f833342d34713f854f4b170296a3c6-piedra-geom--trica-by-vexels.png"></ion-img></p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <p align="center"><ion-img class="logo" src="https://lh3.googleusercontent.com/proxy/igsGeEA7-tYTKjO7t4cN6VHOwhrtHSUFZMzzOEufmDxZqYoN90ZHvstE7LH3Z9FqJoLFUGS8F38uvF_-mMhMU4JisPtV79c"></ion-img></p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <p align="center"><ion-img class="logo" src="https://www.goodfreephotos.com/albums/vector-images/blue-scissors-vector-clipart.png" style="vertical-align:middle"></ion-img></p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <p>
+      Selecciona a tu personaje
+    </p>
+
+    <ion-list>
+      <ion-item *ngFor="let user of usersService.users" [routerLink]="['/details',user.id]">
+        <ion-avatar slot="start">
+          <ion-img src={{user.foto}}></ion-img>
+        </ion-avatar>
+        <ion-label>{{user.name}}</ion-label>
+        <ion-note slot="end">{{user.age}} years old </ion-note>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+</ion-content>

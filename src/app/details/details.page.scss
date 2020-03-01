@@ -1,0 +1,39 @@
+.content1{
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+}
+.content2{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.score{
+  margin-top:.5em;
+  margin-left:2em;
+  font-size:1.5em
+}
+.fa{
+  cursor:pointer;
+  height: 100px;
+  width: 100px;
+}
+
+.ima {
+   height: 100px;
+   width: 100px;
+ }
+
+.ava {
+  height: 120px;
+  width: 120px;
+}
+
+$colors: (
+        primary:    #387ef5,
+        secondary:  #32db64,
+        danger:     #f53d3d,
+        light:      #f4f4f4,
+        dark:       #222,
+        vibrant:    rebeccapurple,
+        bright:     #ffc125
+);
+
